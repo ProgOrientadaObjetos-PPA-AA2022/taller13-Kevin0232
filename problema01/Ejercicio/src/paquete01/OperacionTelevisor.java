@@ -65,10 +65,12 @@ public class OperacionTelevisor {
            cadena = String.format("%s%s", cadena, lista.get(i));
         }
         
-        cadena = String.format("%sLista de Marcas\n%s\nTelevisor Mas Caro: %.2f",
+        cadena = String.format("%sLista de Marcas\n%s\nTelevisor Mas Caro: %.2f\n"
+                + "Total de precios: %.2f",
                 cadena,
                 obtenerMarcas(),
-                obtenerMasCaro());
+                obtenerMasCaro(),
+                obtenerTotalPrecio());
         
         return cadena;
     }

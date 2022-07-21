@@ -5,6 +5,8 @@
  */
 package p3;
 
+import java.util.ArrayList;
+import p1.Matricula;
 import p1.MatriculaCampamento;
 import p1.MatriculaColegio;
 import p1.MatriculaEscuela;
@@ -18,21 +20,32 @@ import p2.TipoMatricula;
  */
 public class Principal {
     public static void main(String[] args) {
+        ArrayList<Matricula> p = new ArrayList<>();
         TipoMatricula tipos = new TipoMatricula();
         
         MatriculaCampamento mcamp = new MatriculaCampamento();
         mcamp.establecerTarifa();
+        p.add(mcamp);
         
         MatriculaColegio mcolegio = new MatriculaColegio();
         mcolegio.establecerTarifa();
+        p.add(mcolegio);
         
         MatriculaEscuela mescuela = new MatriculaEscuela();
+        mescuela.establecerTarifa();
+        p.add(mescuela);
         MatriculaJardin mjardin = new MatriculaJardin();
+        mjardin.establecerTarifa();
+        p.add(mjardin);
         MatriculaMaternal mmaternal = new MatriculaMaternal();
+        mmaternal.establecerTarifa();
+        p.add(mmaternal);
         MatriculaMaternal mmaternal2 = new MatriculaMaternal();
+        mmaternal2.establecerTarifa();
+        p.add(mmaternal2);
         
-        tipos.establecerMatriculaCampamento(mcamp);
-        tipos.establecerMatriculaColegio(mcolegio);
+        tipos.establecerLista(p);
+        tipos.establecerPromedioTarifas();
         tipos.establecerPromedioTarifas();
         System.out.printf("%s\n", tipos);
     }

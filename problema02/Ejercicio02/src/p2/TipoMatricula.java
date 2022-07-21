@@ -5,6 +5,8 @@
  */
 package p2;
 
+import java.util.ArrayList;
+import p1.Matricula;
 import p1.MatriculaCampamento;
 import p1.MatriculaColegio;
 
@@ -13,37 +15,32 @@ import p1.MatriculaColegio;
  * @author reroes
  */
 public class TipoMatricula {
+
     private double promedioMatriculas;
-    private MatriculaCampamento campamento;
-    private MatriculaColegio colegio;
-    // private MatriculaEscuela escuela;
-    // private MatriculaJardin jardin;
-    // private MatriculaMaternal maternal;
-    // private MatriculaMaternal maternal2;
-    
-    public void establecerMatriculaCampamento(MatriculaCampamento c){
-        campamento = c;
+    private ArrayList<Matricula> lista = new ArrayList<>();
+
+    public void establecerLista(ArrayList<Matricula> c) {
+        lista = c;
     }
-    
-    public void establecerMatriculaColegio(MatriculaColegio c){
-        colegio = c;
+
+    public void establecerPromedioTarifas() {
+        double suma = 0;
+        for (Matricula c: lista) {
+            suma += c.obtenerTarifa();
+        }
+        promedioMatriculas = suma/lista.size();
     }
-    
-    public MatriculaCampamento obtenerMatriculaCampamento(){
-        return campamento;
-    }
-    
-    public MatriculaColegio obtenerMatriculaColegio(){
-        return colegio;
-    }
-    
-    public void establecerPromedioTarifas(){
-        promedioMatriculas = (obtenerMatriculaCampamento().obtenerTarifa() + 
-                obtenerMatriculaColegio().obtenerTarifa())/2;
-        
-    }
-    
-    public double obtenerPromedioTarifas(){
+
+    public double obtenerPromedioTarifas() {
         return promedioMatriculas;
+    }
+    @Override
+    public String toString(){
+        String cadena = "";
+        for (Matricula c: lista) {
+            cadena = String.format("%s%s", cadena, c);
+        }
+        cadena = String.format("%sPromedio Tarifas: $ %.2f", cadena,obtenerPromedioTarifas());
+        return cadena;
     }
 }
